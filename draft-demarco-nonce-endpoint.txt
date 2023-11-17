@@ -128,8 +128,10 @@ Table of Contents
 
    ```` HTTP/1.1 200 OK Content-Type: application/json
 
-   { "nonce": "d2JhY2NhbG91cmVqdWFuZGFt" } ```` The nonce value MAY use
-   Base64-urlencoded string or a JSON Web Token [RFC7519].
+   { "nonce": "d2JhY2NhbG91cmVqdWFuZGFt" } ````
+
+   The nonce value MAY use Base64-urlencoded string or a JSON Web Token
+   [RFC7519].
 
    The nonce value MUST be encrypted with an encryption key that:
 
@@ -170,9 +172,10 @@ Table of Contents
 
    { "iss": "https://issuer.example.com", "iat": 1615908701, "exp":
    1615995101, "source_endpoint": "https://service.example.com/nonce-
-   endpoint", "aud": "https://service.example.com/endpoint" } Please
-   note that the values represented in the previous examples may depend
-   on domain specific requirements and implementation.
+   endpoint", "aud": "https://service.example.com/endpoint" }
+
+   Please note that the values represented in the previous examples may
+   depend on domain specific requirements and implementation.
 
 7.  Security Considerations
 
