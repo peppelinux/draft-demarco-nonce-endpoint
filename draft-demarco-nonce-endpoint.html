@@ -1173,8 +1173,8 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This specification defines a method for a client to query a server to request and obtain a new nonce. The nonce is an arbitrary and randomic string used only once.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">OAuth 2.0 deployments using this endpoint uses cryptographic mechanisms for the issuance of the nonces, providing confidentiality of the information carried within the nonces. These information can be, for instance: the origin of the nonce, the time of issuance, the time of expiration and its audiences. An encrypted nonce value is used in infrastructures that do not use shared memory between multiple servers to store and share, within their domain, the nonces previously issued to the Clients.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">This specification defines a method for a client to request and obtain a new nonce from a server. The nonce is an arbitrary and randomic string used only once.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">OAuth 2.0 deployments using this endpoint uses cryptographic mechanisms for the issuance of the nonces, providing confidentiality of the information carried within them. These information can be, for instance: the origin of the nonce, the time of issuance, the time of expiration and its audiences. An encrypted nonce value is used in infrastructures that do not use shared memory between multiple nodes to store and share, within their domain, the nonces previously issued to the Clients.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1243,7 +1243,7 @@ Content-Type: application/json
 the server <span class="bcp14">MUST</span> return an HTTP response with the <code>400</code> status and an <code>error</code> field with the value <code>"nonce_required"</code>.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">This HTTP response <span class="bcp14">MUST</span> contain the <code>Nonce-Endpoint-URI</code> HTTP header with the value set to the URL corresponding to the server nonce endpoint, where a new nonce can be provided to the Client.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">The Client <span class="bcp14">SHOULD</span> use the HTTPs URL provided in the <code>Nonce-Endpoint-URI</code> HTTP header to request a new nonce before renewing the previous request.<a href="#section-5-3" class="pilcrow">¶</a></p>
-<p id="section-5-4">Below is a non-normative example of an error response issued by a server that requires the nonce in the Client request, the response informs the Client about the nonce endpoint where a new nonce can be requested:<a href="#section-5-4" class="pilcrow">¶</a></p>
+<p id="section-5-4">Below is a non-normative example of an error response issued by a server that requires the nonce in the Client request, the response informs the Client about the endpoint where a new nonce can be requested:<a href="#section-5-4" class="pilcrow">¶</a></p>
 <div class="lang-http sourcecode" id="section-5-5">
 <pre>
 HTTP/1.1 400 Bad Request
