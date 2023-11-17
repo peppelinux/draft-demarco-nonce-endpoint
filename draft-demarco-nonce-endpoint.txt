@@ -71,10 +71,11 @@ Table of Contents
    5.  Errors
    6.  Nonce Payload Non-normative Examples
    7.  Security Considerations
-   8.  IANA Considerations
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   8.  Considerations about the JWT jti claim
+   9.  IANA Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
    Acknowledgments
    Author's Address
 
@@ -103,9 +104,12 @@ Table of Contents
 
 3.  Terminology
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
+   *  Nonce: random or pseudo-random number that is generated for a
+      specific use, typically for cryptographic communication.  It is
+      used to protect against replay attacks by ensuring that a message
+      or data cannot be reused or retransmitted, maliciously or
+      otherwise.  The term "nonce" stands for "number used once" and it
+      must be unique within some scope.
 
 4.  Nonce Endpoint
 
@@ -236,13 +240,21 @@ Table of Contents
    of the encryption key.  Therefore, proper key management practices
    are essential.
 
-8.  IANA Considerations
+8.  Considerations about the JWT jti claim
+
+   In this section are provided some consideration about the main
+   differences and scopes the nonce in comparison to the jti claim,
+   defined in [RFC7519].
+
+   TBD.
+
+9.  IANA Considerations
 
    This document has no IANA actions.
 
-9.  References
+10.  References
 
-9.1.  Normative References
+10.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -270,7 +282,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-9.2.  Informative References
+10.2.  Informative References
 
    [BCP195]   Moriarty, K. and S. Farrell, "Deprecating TLS 1.0 and TLS
               1.1", BCP 195, RFC 8996, March 2021.
