@@ -1182,8 +1182,8 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This specification defines a method for a client to request and obtain a new nonce from a server. The nonce is an arbitrary and randomic string used to protect a communication against replay attacks.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">OAuth 2.0 deployments using this endpoint uses cryptographic mechanisms for the issuance of the nonces, providing confidentiality of the information carried within them. These information can be of different nature and designed to satisfy different implementation needs, such as the origin of the nonce, the time of issuance, the time of expiration and its audiences. An encrypted nonce value is used in infrastructures that do not use shared storages between multiple nodes to retain and share, within their domain, the nonces previously issued.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">This specification defines a method for a client to request and obtain a nonce from a server. The nonce is an arbitrary and randomic string used to protect a communication against replay attacks.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">This specification offers a storage-less solution for the infrastructures that do not use shared memories between multiple nodes to retain and share, within their domain, the nonces previously issued. The OAuth 2.0 deployments using the nonce endpoint uses cryptographic mechanisms for the issuance of the nonces, which contain several information according to the implementation needs, such as the origin of the nonce, the time of issuance, the time of expiration and its audiences.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
