@@ -104,12 +104,12 @@ Table of Contents
 
 3.  Terminology
 
-   *  Nonce: random or pseudo-random number that is generated for a
+   Nonce:  A random or pseudo-random number that is generated for a
       specific use, typically for cryptographic communication.  It is
       used to protect against replay attacks by ensuring that a message
       or data cannot be reused or retransmitted, maliciously or
       otherwise.  The term "nonce" stands for "number used once" and it
-      must be unique within some scope.
+      MUST be unique within some scope.
 
 4.  Nonce Endpoint
 
