@@ -118,7 +118,8 @@ Table of Contents
    Below is a non normative example of the HTTP Request made by a Client
    to a nonce endpoint provided by a server.
 
-   GET /nonce HTTP/1.1 Host: server.example.com
+   GET /nonce HTTP/1.1
+   Host: server.example.com
 
    The server responds with a JSON object containing the nonce.  The
    response MUST use the HTTP Header Content-Type value set to
@@ -126,9 +127,12 @@ Table of Contents
    nonce.  Below a non-normative example of the response of the server,
    providing a nonce.
 
-   ```` HTTP/1.1 200 OK Content-Type: application/json
+   HTTP/1.1 200 OK
+   Content-Type: application/json
 
-   { "nonce": "d2JhY2NhbG91cmVqdWFuZGFt" } ````
+   {
+     "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
+   }
 
    The nonce value MAY use Base64-urlencoded string or a JSON Web Token
    [RFC7519].
@@ -158,11 +162,14 @@ Table of Contents
    server that requires the nonce in the Client request and provides, at
    the same time, the nonce endpoint in the form of HTTPs URL:
 
-   ```` HTTP/1.1 400 Bad Request Nonce-Endpoint-URI:
-   http://server.example.org/nonce-endpoint
+   HTTP/1.1 400 Bad Request
+   Nonce-Endpoint-URI: http://server.example.org/nonce-endpoint
 
-   { "error": "nonce_required", "error_description": "Authorization
-   server requires the nonce in the request" } ````
+   {
+     "error": "nonce_required",
+     "error_description":
+       "Authorization server requires the nonce in the request"
+   }
 
 6.  Nonce Payload Non-normative Examples
 
@@ -170,9 +177,13 @@ Table of Contents
    attributes.  Below are provided some non-normative examples of how
    the decrypted and serialized nonce payload may be represented:
 
-   { "iss": "https://issuer.example.com", "iat": 1615908701, "exp":
-   1615995101, "source_endpoint": "https://service.example.com/nonce-
-   endpoint", "aud": "https://service.example.com/endpoint" }
+   {
+     "iss": "https://issuer.example.com",
+     "iat": 1615908701,
+     "exp": 1615995101,
+     "source_endpoint": "https://service.example.com/nonce-endpoint",
+     "aud": "https://service.example.com/endpoint"
+   }
 
    Please note that the values represented in the previous examples may
    depend on domain specific requirements and implementation.
