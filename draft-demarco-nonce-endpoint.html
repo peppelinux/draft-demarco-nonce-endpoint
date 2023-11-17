@@ -1262,7 +1262,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-nonce-request">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-nonce-request" class="section-name selfRef">Nonce Request</a>
       </h2>
-<p id="section-5-1">When a Client needs a Nonce, it sends an HTTP GET request to the server's Nonce Endpoint. In response, the Nonce Issuer provides a Nonce to the Client, encapsulated within a JSON object <span>[<a href="#RFC7159" class="cite xref">RFC7159</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">When a Client needs a Nonce, it sends an HTTP GET request to the Nonce Endpoint. In response, the Nonce Issuer provides a Nonce to the Client, encapsulated within a JSON object <span>[<a href="#RFC7159" class="cite xref">RFC7159</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">Below is a non normative example of the HTTP Request made by a Client to the Nonce Endpoint.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <div class="lang-http sourcecode" id="section-5-3">
 <pre>
@@ -1289,7 +1289,6 @@ Content-Type: application/json
 }
 </pre><a href="#section-6-3" class="pilcrow">¶</a>
 </div>
-<p id="section-6-4">The Nonce value <span class="bcp14">MUST</span> be completely opaque to the Client, in a way that the data contained in it <span class="bcp14">MUST NOT</span> be disclosed.<a href="#section-6-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="nonce-endpoint-discovery">
