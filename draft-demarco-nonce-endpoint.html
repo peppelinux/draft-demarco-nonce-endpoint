@@ -1145,7 +1145,7 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-considerations-about-the-jw" class="internal xref">Considerations about the JWT jti claim</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-considerations-about-nonce-" class="internal xref">Considerations about nonce vs. jti</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
@@ -1220,7 +1220,7 @@ GET /nonce HTTP/1.1
 Host: server.example.com
 </pre><a href="#section-4-3" class="pilcrow">¶</a>
 </div>
-<p id="section-4-4">The server responds with a JSON object containing the nonce. The response <span class="bcp14">MUST</span> use the HTTP Header Content-Type value set to <code>application/json</code> and <span class="bcp14">MUST</span> provide a JSON object containing the member <code>nonce</code>. Below is a non-normative example of the response given by a server:<a href="#section-4-4" class="pilcrow">¶</a></p>
+<p id="section-4-4">The response <span class="bcp14">MUST</span> use the HTTP Header Content-Type value set to <code>application/json</code> and <span class="bcp14">MUST</span> provide a JSON object containing the member <code>nonce</code>. Below is a non-normative example of the response given by a server:<a href="#section-4-4" class="pilcrow">¶</a></p>
 <div class="lang-http sourcecode" id="section-4-5">
 <pre>
 HTTP/1.1 200 OK
@@ -1235,7 +1235,7 @@ Content-Type: application/json
 <p id="section-4-7">The nonce value <span class="bcp14">MUST</span> be encrypted with an encryption key that:<a href="#section-4-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-8.1">
-          <p id="section-4-8.1.1"><span class="bcp14">MUST NOT</span> be provided to the Client by the server.<a href="#section-4-8.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-8.1.1"><span class="bcp14">MUST NOT</span> be provided to the Client by the server;<a href="#section-4-8.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-8.2">
           <p id="section-4-8.2.1"><span class="bcp14">MUST NOT</span> be in control of the Client.<a href="#section-4-8.2.1" class="pilcrow">¶</a></p>
@@ -1249,8 +1249,8 @@ Content-Type: application/json
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-errors" class="section-name selfRef">Errors</a>
       </h2>
 <p id="section-5-1">When a server requires the use of nonces in the request for a specific resource and the Client doesn't provide it in its request,
-the server <span class="bcp14">MUST</span> return an HTTP response with the <code>400</code> status and an <code>error</code> field with the value <code>"nonce_required"</code>.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">This HTTP response <span class="bcp14">MUST</span> contain the <code>Nonce-Endpoint-URI</code> HTTP header with the value set to the URL corresponding to the server nonce endpoint, where a new nonce can be provided to the Client.<a href="#section-5-2" class="pilcrow">¶</a></p>
+the server <span class="bcp14">MUST</span> return an HTTP response with the <code>400</code> status and an <code>error</code> field with the value set to <code>"nonce_required"</code>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">This HTTP response <span class="bcp14">MUST</span> contain the <code>Nonce-Endpoint-URI</code> HTTP header with the value set to the URL corresponding to the nonce endpoint, where a new nonce can be given to the Client.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">The Client <span class="bcp14">SHOULD</span> use the HTTPs URL provided in the <code>Nonce-Endpoint-URI</code> HTTP header to request a new nonce before renewing the previous request.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">Below is a non-normative example of an error response issued by a server that requires the nonce in the Client request, the response informs the Client about the endpoint where a new nonce can be requested:<a href="#section-5-4" class="pilcrow">¶</a></p>
 <div class="lang-http sourcecode" id="section-5-5">
@@ -1272,8 +1272,8 @@ Nonce-Endpoint-URI: http://server.example.org/nonce-endpoint
       <h2 id="name-nonce-payload-non-normative">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-nonce-payload-non-normative" class="section-name selfRef">Nonce Payload Non-normative Examples</a>
       </h2>
-<p id="section-6-1">The decrypted nonce payload may be a JSON object that contains any kind of implementation-specific attributes.
-Below are provided some non-normative examples, describing how a decrypted and serialized nonce payload may appear:<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">The decrypted nonce payload may be of different formats and contains any kind of implementation-specific attributes.
+Below are provided some non-normative examples, describing how a decrypted and JSON serialized nonce payload may appear:<a href="#section-6-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-6-2">
 <pre>
 {
@@ -1294,7 +1294,7 @@ Below are provided some non-normative examples, describing how a decrypted and s
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-7-1">The nonce endpoint <span class="bcp14">MUST</span> be protected by TLS to prevent eavesdropping and man-in-the-middle attacks, therefore the practices defined in <span>[<a href="#BCP195" class="cite xref">BCP195</a>]</span> must be followed.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">The server <span class="bcp14">MUST</span> securely generate and store the symmetric key used to encrypt the nonce. The key <span class="bcp14">MUST NOT</span> be provided to the Client.<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-2">The server <span class="bcp14">MUST</span> securely generate and store the symmetric key used to encrypt the nonce. The key <span class="bcp14">MUST NOT</span> be provided to the Client or to any other entities outside of the server's domain.<a href="#section-7-2" class="pilcrow">¶</a></p>
 <p id="section-7-3">The robustness of the encryption key plays a crucial role in the security of the nonce endpoint. The following considerations should be taken into account:<a href="#section-7-3" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-7-4">
 <li id="section-7-4.1">
@@ -1319,12 +1319,12 @@ Below are provided some non-normative examples, describing how a decrypted and s
 <p id="section-7-5">The security of the nonce endpoint is only as strong as the security of the encryption key. Therefore, proper key management practices are essential.<a href="#section-7-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="considerations-about-the-jwt-jti-claim">
+<div id="considerations-about-nonce-vs-jti">
 <section id="section-8">
-      <h2 id="name-considerations-about-the-jw">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-considerations-about-the-jw" class="section-name selfRef">Considerations about the JWT jti claim</a>
+      <h2 id="name-considerations-about-nonce-">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-considerations-about-nonce-" class="section-name selfRef">Considerations about nonce vs. jti</a>
       </h2>
-<p id="section-8-1">In this section are provided some consideration about the main differences and scopes the nonce in comparison to the <code>jti</code> claim, defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">In this section are provided some consideration about the main differences and scopes about the nonce in comparison to the <code>jti</code> claim defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-8-1" class="pilcrow">¶</a></p>
 <p id="section-8-2">TBD.<a href="#section-8-2" class="pilcrow">¶</a></p>
 </section>
 </div>
