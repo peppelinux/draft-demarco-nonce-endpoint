@@ -7,7 +7,7 @@
 <title>OAuth 2.0 Nonce Endpoint</title>
 <meta content="Giuseppe De Marco" name="author">
 <meta content="
-       This document defines the nonce endpoint for the implementations based on OAuth 2.0  .
+       This document defines the nonce endpoint for OAuth 2.0 implementations  .
 The nonce endpoint allows a client to request and obtain server-generated opaque nonces from a server, such as an OAuth 2.0 Authorization Server. 
     " name="description">
 <meta content="xml2rfc 3.18.2" name="generator">
@@ -1061,7 +1061,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">OAuth 2.0 Nonce Endpoint</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines the nonce endpoint for the implementations based on OAuth 2.0 <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.
+<p id="section-abstract-1">This document defines the nonce endpoint for OAuth 2.0 implementations <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.
 The nonce endpoint allows a client to request and obtain server-generated opaque nonces from a server, such as an OAuth 2.0 Authorization Server.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1173,8 +1173,8 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This specification defines a method for a client to query a server, such as an OAuth 2.0 authorization server, to request and obtain a new nonce. The nonce is an arbitrary and randomic string used only once.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">OAuth 2.0 deployments of this endpoint must use encryption for the issuance of the nonces to provide confidentiality of the information carried within the nonces. These can be, for instance: the origin of the nonce, the time of issuance and expiration and its audiences. An encrypted nonce value can be used in infrastructures that do not use shared memory between multiple servers to store and share the issued nonces within their domain.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">This specification defines a method for a client to query a server to request and obtain a new nonce. The nonce is an arbitrary and randomic string used only once.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">OAuth 2.0 deployments using this endpoint uses cryptographic mechanisms for the issuance of the nonces to provide confidentiality of the information carried within the nonces. These information can be, for instance: the origin of the nonce, the time of issuance and expiration and its audiences. An encrypted nonce value is used in infrastructures that do not use shared memory between multiple servers to store and share the issued nonces within their domain.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
