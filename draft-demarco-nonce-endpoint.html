@@ -7,8 +7,7 @@
 <title>OAuth 2.0 Nonce Endpoint</title>
 <meta content="Giuseppe De Marco" name="author">
 <meta content="
-       This document defines the nonce endpoint for OAuth 2.0 implementations  .
-The nonce endpoint allows a client to request and obtain server-generated opaque nonces from a server, such as an OAuth 2.0 Authorization Server. 
+       This document defines the nonce endpoint for OAuth 2.0 implementations   allowing a client to request and obtain server-generated opaque nonces from a server. 
     " name="description">
 <meta content="xml2rfc 3.18.2" name="generator">
 <meta content="OAuth 2.0" name="keyword">
@@ -21,13 +20,13 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.11.0
+    platformdirs 4.0.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.9
+    wcwidth 0.2.10
 -->
 <link href="draft-demarco-nonce-endpoint.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1030,7 +1029,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Marco</td>
-<td class="center">Expires 20 May 2024</td>
+<td class="center">Expires 21 May 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1043,12 +1042,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-demarco-nonce-endpoint-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-11-17" class="published">17 November 2023</time>
+<time datetime="2023-11-18" class="published">18 November 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-05-20">20 May 2024</time></dd>
+<dd class="expires"><time datetime="2024-05-21">21 May 2024</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1061,8 +1060,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">OAuth 2.0 Nonce Endpoint</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines the nonce endpoint for OAuth 2.0 implementations <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>.
-The nonce endpoint allows a client to request and obtain server-generated opaque nonces from a server, such as an OAuth 2.0 Authorization Server.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines the nonce endpoint for OAuth 2.0 implementations <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> allowing a client to request and obtain server-generated opaque nonces from a server.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1094,7 +1092,7 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 May 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1182,8 +1180,8 @@ The nonce endpoint allows a client to request and obtain server-generated opaque
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">This specification defines a method for a client to request and obtain a nonce from a server. The nonce is an arbitrary and randomic string used to protect a communication against replay attacks.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">This specification offers a storage-less solution for the infrastructures that do not use shared memories between multiple nodes to retain and share, within their domain, the nonces previously issued. The OAuth 2.0 deployments using the nonce endpoint uses cryptographic mechanisms for the issuance of the nonces, which contain several information according to the implementation needs, such as the origin of the nonce, the time of issuance, the time of expiration and its audiences.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-1">This specification defines a method for a client to request and obtain a nonce from a server that requires it to protect a communication against replay attacks.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">The nonce endpoint defined in this document outlines a storage-less solution for infrastructures that do not use shared memories between multiple nodes. The OAuth 2.0 deployments that uses the nonce endpoint described in this specification are able to use the nonces issued by a trusted party, by mean of cryptographic mechanisms, and verify information such as the origin of the nonce, the time of issuance, the time of expiration and its audiences.<a href="#section-1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1205,7 +1203,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <span class="break"></span><dl class="dlParallel" id="section-3-1">
         <dt id="section-3-1.1">Nonce:</dt>
         <dd style="margin-left: 1.5em" id="section-3-1.2">
-          <p id="section-3-1.2.1">A random or pseudo-random number that is generated for a specific use, typically for cryptographic communication. The Nonce is used to protect against replay attacks by ensuring that a message or data cannot be reused or retransmitted, maliciously or otherwise. The term "nonce" stands for "number used once" and it <span class="bcp14">MUST</span> be unique within some scope.<a href="#section-3-1.2.1" class="pilcrow">¶</a></p>
+          <p id="section-3-1.2.1">A random or pseudo-random number that is generated for a specific use, typically for cryptographic communication. The Nonce is used to protect against replay attacks by ensuring that a message or data cannot be reused or retransmitted. The term "nonce" stands for "number used once" and it <span class="bcp14">MUST</span> be unique within some scope.<a href="#section-3-1.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-1.3">Nonce Issuer:</dt>
@@ -1215,7 +1213,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd class="break"></dd>
 <dt id="section-3-1.5">Nonce Endpoint:</dt>
         <dd style="margin-left: 1.5em" id="section-3-1.6">
-          <p id="section-3-1.6.1">The HTTP endpoint provided by the Nonce Issuer for the issuance of new Nonces.<a href="#section-3-1.6.1" class="pilcrow">¶</a></p>
+          <p id="section-3-1.6.1">The HTTP endpoint provided by the Nonce Issuer for the issuance of the Nonces.<a href="#section-3-1.6.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1226,33 +1224,36 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-requirements">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-requirements" class="section-name selfRef">Requirements</a>
       </h2>
-<p id="section-4-1">The Nonce Endpoint is an HTTP endpoint designed to generate new Nonces. This endpoint <span class="bcp14">MUST</span> satisfy the following requirements:<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">The Nonce Endpoint satisfies the following requirements:<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
-          <p id="section-4-2.1.1">It is mandatory for this endpoint to be secured by TLS <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span>;<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.1.1">It <span class="bcp14">MUST</span> be secured by TLS <span>[<a href="#RFC5246" class="cite xref">RFC5246</a>]</span>;<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.2">
-          <p id="section-4-2.2.1">It generates a new Nonce in response to each request, such that under no circumstances can two identical nonces be generated by the Nonce Issuer in response to two different requests, whether these occur simultaneously or at different times.<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.2.1">It <span class="bcp14">MUST</span> generate a Nonce in response to each request, such that under no circumstances can two identical nonces be generated by the Nonce Issuer in response to two different requests, whether these occur simultaneously or at different times.<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-4-3">The Nonce <span class="bcp14">MUST</span> satisfy the following requirements:<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-3">The Nonce value satisfies the following requirements:<a href="#section-4-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-4.1">
-          <p id="section-4-4.1.1">The Nonces <span class="bcp14">MUST</span> be purely opaque to the Clients that receive these;<a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.1.1">It <span class="bcp14">MUST</span> be purely opaque to the Clients that receive these;<a href="#section-4-4.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-4.2">
-          <p id="section-4-4.2.1">The Nonce values <span class="bcp14">MUST</span> be encrypted with an encryption key that:<a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
+          <p id="section-4-4.2.1">It <span class="bcp14">MUST</span> be encrypted with an encryption key that:<a href="#section-4-4.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-4.2.2.1">
               <p id="section-4-4.2.2.1.1"><span class="bcp14">MUST NOT</span> be provided by the Nonce Issuer to the Client;<a href="#section-4-4.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-4-4.2.2.2">
-              <p id="section-4-4.2.2.2.1"><span class="bcp14">MUST NOT</span> be provided by the Nonce Issuer to any other entity outside the domain where the Nonce Issuer belongs;<a href="#section-4-4.2.2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-4-4.2.2.2.1"><span class="bcp14">MUST NOT</span> be provided by the Nonce Issuer to any other entity outside the domain where the Nonce Issuer belongs.<a href="#section-4-4.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
           </ul>
 </li>
-        <li class="normal" id="section-4-4.3">
-          <p id="section-4-4.3.1">Only the Nonce Issuer and the servers within the Nonce Issuer's domain have the ability to decrypt the Nonce and access its decrypted contents. No other entity can decrypt or know the decrypted contents of the Nonce.<a href="#section-4-4.3.1" class="pilcrow">¶</a></p>
+      </ul>
+<p id="section-4-5">The Nonce Issuer value satisfies the following requirements:<a href="#section-4-5" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-6.1">
+          <p id="section-4-6.1.1">The Nonce Issuer, and the servers within the Nonce Issuer's domain, have the ability to decrypt the Nonce and access its decrypted contents. No other entity can decrypt or know the decrypted contents of the Nonce.<a href="#section-4-6.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1277,9 +1278,9 @@ Host: server.example.com
       <h2 id="name-nonce-response">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-nonce-response" class="section-name selfRef">Nonce Response</a>
       </h2>
-<p id="section-6-1">In response, the Nonce Issuer provides a Nonce to the Client, encapsulated within a JSON object <span>[<a href="#RFC7159" class="cite xref">RFC7159</a>]</span>.
-The response <span class="bcp14">MUST</span> use the HTTP Header Content-Type value set to <code>application/json</code> and <span class="bcp14">MUST</span> provide in the response message a JSON object with the member <code>nonce</code> in it.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Below is a non-normative example of the response given by a Nonce Issuer:<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-1">The Nonce Endpoint provides a Nonce to the Client, encapsulated within a JSON object <span>[<a href="#RFC7159" class="cite xref">RFC7159</a>]</span>.
+The response <span class="bcp14">MUST</span> use the HTTP Header Content-Type value set to <code>application/json</code> and <span class="bcp14">MUST</span> provide in the response message a JSON object with the member <code>nonce</code>.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">Below is a non-normative example of the response given by a Nonce Endpoint:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <div class="lang-http sourcecode" id="section-6-3">
 <pre>
 HTTP/1.1 200 OK
@@ -1299,9 +1300,9 @@ Content-Type: application/json
       </h2>
 <p id="section-7-1">When a server requires the use of a Nonce in the request for a specific resource and the Client doesn't provide it in its request,
 the server <span class="bcp14">MUST</span> return an HTTP response with the  HTTP status code <code>400</code> and an <code>error</code> field with the value set to <code>"nonce_required"</code>.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">This HTTP response <span class="bcp14">MUST</span> contain the <code>Nonce-Endpoint-URI</code> HTTP header with the value set to the URL corresponding to the Nonce Endpoint, where the Client can request and fetch a new Nonce from the Nonce Issuer.<a href="#section-7-2" class="pilcrow">¶</a></p>
-<p id="section-7-3">The Client <span class="bcp14">SHOULD</span> use the endpoint provided in the <code>Nonce-Endpoint-URI</code> HTTP header to request a new Nonce before renewing the request, where to include the Nonce provided by the Nonce Issuer.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">Below is a non-normative example of an error response issued by a server that requires the Nonce in the Client request, the response informs the Client about the Nonce Endpoint where a Nonce can be requested:<a href="#section-7-4" class="pilcrow">¶</a></p>
+<p id="section-7-2">This response <span class="bcp14">MUST</span> also contain the <code>Nonce-Endpoint-URI</code> HTTP header, with the value set to the URL corresponding to the Nonce Endpoint, where the Client <span class="bcp14">SHOULD</span> request and fetch a new Nonce.<a href="#section-7-2" class="pilcrow">¶</a></p>
+<p id="section-7-3">The Client <span class="bcp14">SHOULD</span> use the endpoint provided in the <code>Nonce-Endpoint-URI</code> HTTP header to request a Nonce. Once the Nonce is reveived, the Client <span class="bcp14">MAY</span> renew the request to the server, including the obtained Nonce.<a href="#section-7-3" class="pilcrow">¶</a></p>
+<p id="section-7-4">Below is a non-normative example of an error response issued by a server that requires the Nonce in the Client request, the response informs the Client about the Nonce Endpoint where the Nonce can be requested:<a href="#section-7-4" class="pilcrow">¶</a></p>
 <div class="lang-http sourcecode" id="section-7-5">
 <pre>
 HTTP/1.1 400 Bad Request
@@ -1314,7 +1315,7 @@ Nonce-Endpoint-URI: http://server.example.org/nonce-endpoint
 }
 </pre><a href="#section-7-5" class="pilcrow">¶</a>
 </div>
-<p id="section-7-6">In cases where, for some reasons, a correctly issued Nonce can no longer be considered valid by the server that receives it, the server <span class="bcp14">MUST</span> return the generic error <code>"nonce_required"</code> reporting the same description as <code>"error_description"</code> as if the Nonce had not been received. The cases when an issued Nonce is considered no longer valid <span class="bcp14">MAY</span> be caused by the rotation of the encryption keys, its expiration or other specific conditions internal to an implementation.<a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-6">In cases where, for some reasons, a correctly issued Nonce can no longer be considered valid by the server that receives it, the server <span class="bcp14">MUST</span> return the generic error <code>"nonce_required"</code> reporting the same description as <code>"error_description"</code>, as if the Nonce had not been received. The cases when an issued Nonce is considered no longer valid <span class="bcp14">MAY</span> be caused by the rotation of the encryption keys, its expiration or other specific conditions internal to an implementation.<a href="#section-7-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="non-normative-examples">
@@ -1322,7 +1323,7 @@ Nonce-Endpoint-URI: http://server.example.org/nonce-endpoint
       <h2 id="name-non-normative-examples">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-non-normative-examples" class="section-name selfRef">Non-normative Examples</a>
       </h2>
-<p id="section-8-1">The decrypted Nonce payload may use different formats and encodings, according to the different implementations that uses it, and contains any kind of implementation-specific attributes.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">The decrypted Nonce payload may use different formats and encodings, according to the different implementations that requires it, and contains any kind of implementation-specific attributes.<a href="#section-8-1" class="pilcrow">¶</a></p>
 <p id="section-8-2">Below are provided some non-normative examples, describing how a decrypted and JSON serialized Nonce payload may appear:<a href="#section-8-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-8-3">
 <pre>
