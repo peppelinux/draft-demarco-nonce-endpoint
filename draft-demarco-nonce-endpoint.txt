@@ -104,18 +104,18 @@ Table of Contents
 
 3.  Terminology
 
-   Nonce:  A random or pseudo-random number that is generated for a
+   *Nonce*:  A random or pseudo-random number that is generated for a
       specific use, typically for cryptographic communication.  The
       Nonce is used to protect against replay attacks by ensuring that a
       message or data cannot be reused or retransmitted.  The term
       "nonce" stands for "number used once" and it MUST be unique within
       some scope.
 
-   Nonce Issuer:  The entity that generates and provides the Nonce.  In
-      the context of OAuth 2.0, the Nonce Issuer would typically be the
-      Authorization Server.
+   *Nonce Issuer*:  The entity that generates and provides the Nonce.
+      In the context of OAuth 2.0, the Nonce Issuer would typically be
+      the Authorization Server.
 
-   Nonce Endpoint:  The HTTP endpoint provided by the Nonce Issuer for
+   *Nonce Endpoint*:  The HTTP endpoint provided by the Nonce Issuer for
       the issuance of the Nonces.
 
 4.  Requirements
