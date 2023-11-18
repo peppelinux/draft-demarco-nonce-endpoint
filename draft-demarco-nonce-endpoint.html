@@ -1252,7 +1252,13 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-4-5">The Nonce Issuer satisfies the following requirements:<a href="#section-4-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-6.1">
-          <p id="section-4-6.1.1">The Nonce Issuer, and the servers within the Nonce Issuer's domain, can decrypt the Nonce and access its decrypted contents. No other entity might decrypt or know the decrypted contents of the Nonce.<a href="#section-4-6.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-6.1.1">The Nonce Issuer <span class="bcp14">MUST</span> encrypt the Nonce value.<a href="#section-4-6.1.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-4-7">The audiences of the Nonce satisfies the following requirements:<a href="#section-4-7" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-8.1">
+          <p id="section-4-8.1.1">The servers, within the Nonce Issuer's domain, <span class="bcp14">SHOULD</span> decrypt the Nonce and access its decrypted contents. No other entity might decrypt or know the decrypted contents of the Nonce.<a href="#section-4-8.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
