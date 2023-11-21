@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-19T00:31:09.775936+00:00",
+  "timestamp": "2023-11-21T00:29:09.482058+00:00",
   "repo": "peppelinux/draft-demarco-nonce-endpoint",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOKus-lM53Yv9d",
+      "title": "Review",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/issues/1",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "- [ ] The proposed solution assumes that the interaction starts with the client interacting with the server without a nonce. As a result, an error code is returned with the nonce endpoint details and the client is then expected to interact with the nonce endpoint, obtain a new nonce, and then retry the request with the nonce.\r\n\r\n- [ ] The document should describe a flow that would allow the client to initially go directly to the nonce endpoint to obtain a nonce before contacting the server, to avoid the error case.\r\n\r\n- [ ] the document should describe a flow that would allow a valid response to a request with a valid nonce to return a new nonce that could be used with subsequent requests to avoid the need for a new request to the nonce endpoint, as an optimization to reduce latency in load situations.\r\n\r\n- [ ] The document should also add this new endpoint to the \"OAuth Authorization Server Metadata\" registry.",
+      "createdAt": "2023-11-20T20:44:49Z",
+      "updatedAt": "2023-11-20T20:44:49Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
