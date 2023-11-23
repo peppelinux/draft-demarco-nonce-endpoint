@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-21T00:29:09.482058+00:00",
+  "timestamp": "2023-11-23T00:28:50.821124+00:00",
   "repo": "peppelinux/draft-demarco-nonce-endpoint",
   "labels": [
     {
@@ -65,7 +65,175 @@
       "updatedAt": "2023-11-20T20:44:49Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOKus-lM53dFuY",
+      "title": "Nonce requirements",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/issues/2",
+      "state": "OPEN",
+      "author": "fmarino-ipzs",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The main basic security requirements for the Nonce are:\r\n\r\n1. It MUST be **unguessable**.\r\n2. It MUST be used **once** and for a **short time**.\r\n\r\nThe first requirement can be achieved either by:\r\n- (Cryptographic) Randomness or\r\n- Encryption\r\n",
+      "createdAt": "2023-11-21T11:55:40Z",
+      "updatedAt": "2023-11-21T23:49:32Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "OWNER",
+          "body": "Ok, please include them in a PR and include yourself as author as well",
+          "createdAt": "2023-11-21T23:47:27Z",
+          "updatedAt": "2023-11-21T23:47:42Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "OWNER",
+          "body": "If we Say that It must be encrypted the randomness doesn't remove the encryption\r\n\r\nThen, instead of OR It should be AND unless the WG decides differently",
+          "createdAt": "2023-11-21T23:49:02Z",
+          "updatedAt": "2023-11-21T23:49:32Z"
+        }
+      ]
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 3,
+      "id": "PR_kwDOKus-lM5gBYNX",
+      "title": "Editorial and Update on the Requirements",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/pull/3",
+      "state": "CLOSED",
+      "author": "asharif1990",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I made a pass on the whole document by improving the text and making some changes to the non-normative examples and the requirements. ",
+      "createdAt": "2023-11-21T13:29:16Z",
+      "updatedAt": "2023-11-21T13:52:15Z",
+      "baseRepository": "peppelinux/draft-demarco-nonce-endpoint",
+      "baseRefName": "main",
+      "baseRefOid": "d9e38880a527bf4eefd7425e12674e8e77967104",
+      "headRepository": "asharif1990/draft-demarco-nonce-endpoint",
+      "headRefName": "main",
+      "headRefOid": "e18f99819d2e92a3d8bb2f945f27f52b32f8501d",
+      "closedAt": "2023-11-21T13:52:15Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOKus-lM5gBlIx",
+      "title": "[Editorial and update the requirements]",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/pull/4",
+      "state": "MERGED",
+      "author": "asharif1990",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial and update the requirements",
+      "createdAt": "2023-11-21T13:59:45Z",
+      "updatedAt": "2023-11-21T15:42:00Z",
+      "baseRepository": "peppelinux/draft-demarco-nonce-endpoint",
+      "baseRefName": "main",
+      "baseRefOid": "d9e38880a527bf4eefd7425e12674e8e77967104",
+      "headRepository": "asharif1990/draft-demarco-nonce-endpoint",
+      "headRefName": "Revision",
+      "headRefOid": "a35ad8e357ec01157336d4290e35b96b474cc857",
+      "closedAt": "2023-11-21T15:41:59Z",
+      "mergedAt": "2023-11-21T15:41:59Z",
+      "mergedBy": "peppelinux",
+      "mergeCommit": {
+        "oid": "601b21c19bbdd0875066fc471a4366c1528f672d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKus-lM5n2gOc",
+          "commit": {
+            "abbreviatedOid": "102d7d2"
+          },
+          "author": "peppelinux",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-21T15:40:36Z",
+          "updatedAt": "2023-11-21T15:40:37Z",
+          "comments": [
+            {
+              "originalPosition": 63,
+              "body": "```suggestion\r\nthe Authorization Server MUST return an HTTP response with the HTTP status code `400` and an `error` field with the value set to `\"nonce_required\"`.\r\n```",
+              "createdAt": "2023-11-21T15:40:36Z",
+              "updatedAt": "2023-11-21T15:40:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKus-lM5n2g2K",
+          "commit": {
+            "abbreviatedOid": "102d7d2"
+          },
+          "author": "peppelinux",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-21T15:41:30Z",
+          "updatedAt": "2023-11-21T15:41:31Z",
+          "comments": [
+            {
+              "originalPosition": 111,
+              "body": "in the consideration we don't require normative terms like MUST and so on ... just FYI",
+              "createdAt": "2023-11-21T15:41:31Z",
+              "updatedAt": "2023-11-21T15:41:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKus-lM5n2hJL",
+          "commit": {
+            "abbreviatedOid": "a35ad8e"
+          },
+          "author": "peppelinux",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-21T15:41:49Z",
+          "updatedAt": "2023-11-21T15:41:49Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOKus-lM5gC4_g",
+      "title": "fix build error",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/pull/5",
+      "state": "MERGED",
+      "author": "fmarino-ipzs",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR fixes a build error (nl at the end of the file).",
+      "createdAt": "2023-11-21T16:43:54Z",
+      "updatedAt": "2023-11-21T23:46:44Z",
+      "baseRepository": "peppelinux/draft-demarco-nonce-endpoint",
+      "baseRefName": "main",
+      "baseRefOid": "601b21c19bbdd0875066fc471a4366c1528f672d",
+      "headRepository": "fmarino-ipzs/draft-demarco-nonce-endpoint",
+      "headRefName": "patch-1",
+      "headRefOid": "63417e967fb74d5a451a366a37d85bf5bd7107ca",
+      "closedAt": "2023-11-21T23:46:44Z",
+      "mergedAt": "2023-11-21T23:46:44Z",
+      "mergedBy": "peppelinux",
+      "mergeCommit": {
+        "oid": "28ac702f50189d54985a8e57ebe69c96bcd619c1"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
