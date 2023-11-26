@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-11-23T00:28:50.821124+00:00",
+  "timestamp": "2023-11-26T00:30:55.188025+00:00",
   "repo": "peppelinux/draft-demarco-nonce-endpoint",
   "labels": [
     {
@@ -96,6 +96,38 @@
           "updatedAt": "2023-11-21T23:49:32Z"
         }
       ]
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOKus-lM532tKI",
+      "title": "payload must include a random value",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/issues/6",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "two different http requests to the nonce endpoint MUST generate responses containing two different nonces, because it must not be possibile to obtain the same nonce in the multiverse of the nonces.\r\n\r\na random value in the payload MUST be always provided to increase the security, aside the iat, exp ...\r\n\r\niat and exp alone cannot prevent that the same encrypted nonce would be provided if two concurrent requests happens in the same time",
+      "createdAt": "2023-11-25T23:36:46Z",
+      "updatedAt": "2023-11-25T23:36:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOKus-lM532tPJ",
+      "title": "This endpoint doesn't represent any mitigation againts the replay attacks",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/issues/7",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "writing this draft I found the evidence that there was a false assumption about how the nonce would be better than jti (using client_id+jti-value) in preventing replay attacks when the nonces doesn't requires a shared storage.\r\n\r\nit seems so evident right now that even if the nonce is encrypted and not shared between multiple nodes, this doesn't prevent the replay attacks if, once issued and used to a specific endpoint by a client, it must then be saved in a shared storage between the nodes to actually prevents replay attacks.\r\n\r\nThen all the assumption about how the nonce is considered more smart and scalable than the jti failed.\r\n\r\nwe can only say that nonce is issued by AS while jti by client, but against the replay attacks a shared storage between the nodes MUST always be provided.",
+      "createdAt": "2023-11-25T23:38:50Z",
+      "updatedAt": "2023-11-25T23:38:50Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
