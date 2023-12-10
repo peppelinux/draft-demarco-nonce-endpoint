@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-07T00:28:53.034346+00:00",
+  "timestamp": "2023-12-10T00:31:43.183367+00:00",
   "repo": "peppelinux/draft-demarco-nonce-endpoint",
   "labels": [
     {
@@ -126,6 +126,22 @@
       "body": "writing this draft I found the evidence that there was a false assumption about how the nonce would be better than jti (using client_id+jti-value) in preventing replay attacks when the nonces doesn't requires a shared storage.\r\n\r\nit seems so evident right now that even if the nonce is encrypted and not shared between multiple nodes, this doesn't prevent the replay attacks if, once issued and used to a specific endpoint by a client, it must then be saved in a shared storage between the nodes to actually prevents replay attacks.\r\n\r\nThen all the assumption about how the nonce is considered more smart and scalable than the jti failed.\r\n\r\nwe can only say that nonce is issued by AS while jti by client, but against the replay attacks a shared storage between the nodes MUST always be provided.",
       "createdAt": "2023-11-25T23:38:50Z",
       "updatedAt": "2023-11-25T23:38:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOKus-lM55KGzU",
+      "title": "SPICE challenge endpoint",
+      "url": "https://github.com/peppelinux/draft-demarco-nonce-endpoint/issues/8",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The following is SPICE defining a spice-challenge endpoint:\r\n\r\nhttps://github.com/transmute-industries/dune/pull/1/files#diff-e854808af98ab6ffb0609f6573aa357a0bcd4a574df72074cc120b96a613ceedR8\r\n\r\nOpenPubkey using nonce in some specific way (Hash of a set of claims) to get the IDPs to sign it without requiring any changes on the IDP\r\n\r\nhttps://www.bastionzero.com/openpubkey\r\n\r\n@asharif1990",
+      "createdAt": "2023-12-08T13:50:54Z",
+      "updatedAt": "2023-12-08T13:50:54Z",
       "closedAt": null,
       "comments": []
     }
